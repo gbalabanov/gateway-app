@@ -55,7 +55,6 @@ public class SessionService {
             redisTemplate.opsForValue().increment(eligibleQueue);
             //TODO does the request handling in terms of db and message broker needs transaction ?
             sessionRepository.save(new SessionEntity(sessionDto));
-            log.info("TOTAL INVOCATIONS FOR QUEUE {} : {}", eligibleQueue, redisTemplate.opsForZSet().score(QUEUES_TOTAL_CACHE_NAME, eligibleQueue));
         }
     }
 

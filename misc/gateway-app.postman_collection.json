@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "bf3d8f45-819c-4373-96da-e8b84a1caf32",
+		"name": "gateway-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Find requests by session id json",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "csp-auth-token",
+						"value": "{{csp-access-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"requestId\":\"{{$guid}}\",\r\n\"sessionId\":\"test-session8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/json_api/find",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"json_api",
+						"find"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert json",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"requestId\":\"{{$guid}}\",\r\n\"sessionId\":\"test-session8\",\r\n\"timestamp\":123131312,\r\n\"producerId\":\"test-producer\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/json_api/insert",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"json_api",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all sessions by user id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "csp-auth-token",
+						"value": "{{csp-access-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"requestId\":\"{{$guid}}\",\r\n\"sessionId\":\"test-session2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/sessions?userId=test-producer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"sessions"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "test-producer"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find requests by session id xml",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "csp-auth-token",
+						"value": "{{csp-access-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<command id=\"{{$guid}}\">\r\n    <get session=\"test-session6\">\r\n    </get>\r\n</command>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/xml_api/command",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"xml_api",
+						"command"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert xml",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<command id=\"{{$guid}}\">\r\n    <enter session=\"test-session6\">\r\n    <timestamp>123131312312</timestamp>\r\n    <player>test-producer</player>\r\n    </enter>\r\n</command>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/xml_api/command",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"xml_api",
+						"command"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
