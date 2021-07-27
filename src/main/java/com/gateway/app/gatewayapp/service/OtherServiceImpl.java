@@ -41,7 +41,7 @@ public class OtherServiceImpl implements OtherService {
     private final RedisTemplate redisTemplate;
 
     @Override
-    public void sendReceive(SessionDto sessionDto) throws InterruptedException, IOException {
+    public void sendReceive(SessionDto sessionDto) throws InterruptedException {
         URI endpoint = UriComponentsBuilder.fromHttpUrl(OTHER_SERVICE_URL)
                 .queryParam("sessionId", sessionDto.getSessionId())
                 .queryParam("requestId", sessionDto.getRequestId()).build().toUri();

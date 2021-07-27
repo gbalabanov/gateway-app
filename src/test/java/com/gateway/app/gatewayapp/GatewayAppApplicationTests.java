@@ -33,9 +33,7 @@ class GatewayAppApplicationTests {
 	private int totalQueues;
 
 	@Test
-	void contextLoads() {
-		System.out.println("----------------------" + sessionService);
-	}
+	void contextLoads() {}
 
 	@Test
 	void testSimultaneousInvocations() throws InterruptedException {
