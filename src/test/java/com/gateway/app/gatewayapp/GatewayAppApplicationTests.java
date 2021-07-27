@@ -54,13 +54,10 @@ class GatewayAppApplicationTests {
 
 		Thread.sleep(50000);
 
-		redisTemplate.opsForZSet().rangeWithScores(QUEUES_TOTAL_CACHE_NAME, 0, Integer.MAX_VALUE).forEach(new Consumer() {
-			@Override
-			public void accept(final Object o) {
-				ZSetOperations.TypedTuple<String> s = (ZSetOperations.TypedTuple)o;
-				//score starts from 1
-				Assertions.assertEquals(totalRequests/totalQueues + 1, s.getScore());
-			}
+		redisTemplate.opsForZSet().rangeWithScores(QUEUES_TOTAL_CACHE_NAME, 0, Integer.MAX_VALUE).forEach(o -> {
+			ZSetOperations.TypedTuple<String> s = (ZSetOperations.TypedTuple)o;
+			//score starts from 1
+			Assertions.assertEquals(totalRequests/totalQueues + 1, s.getScore());
 		});
 	}
 
