@@ -1,4 +1,4 @@
-For running the gateway-app along with its dependnecies (PostgreSQL, RabbitMQ, Redis) use docker-compose up
+For running the gateway-app along with its dependnecies (PostgreSQL, RabbitMQ, Redis) use docker-compose up. Then use the existing Postman colletion in /misc/ folder to make requests.
 
 For running the gateway-app test:
   1. use docker-compose -f docker-compose-env-only.yml up
