@@ -5,7 +5,7 @@ Then use the existing Postman collection in /misc/ folder to make requests.
 
 Configuration:
 
--docker-compose.yml:
+1. docker-compose.yml:
 
 GATEWAY_BROKER_QUEUES=6 - set the number of queues to be created during runtime
 
