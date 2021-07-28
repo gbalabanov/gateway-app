@@ -1,6 +1,7 @@
 package com.gateway.app.gatewayapp;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -26,10 +27,10 @@ class GatewayAppApplicationTests {
 	@Autowired
 	RedisTemplate redisTemplate;
 
-	@Value("${total.requests.to.create:100}")
+	@Value("${total.requests.to.create:1000}")
 	private int totalRequests;
 
-	@Value("${gateway.broker.queues:5}")
+	@Value("${gateway.broker.queues:20}")
 	private int totalQueues;
 
 	@Test
@@ -52,7 +53,7 @@ class GatewayAppApplicationTests {
 			threads[0].join();
 		}
 
-		Thread.sleep(50000);
+		Assertions.assertEquals(totalQueues, redisTemplate.opsForZSet().rangeWithScores(QUEUES_TOTAL_CACHE_NAME, 0, Integer.MAX_VALUE).size());
 
 		redisTemplate.opsForZSet().rangeWithScores(QUEUES_TOTAL_CACHE_NAME, 0, Integer.MAX_VALUE).forEach(o -> {
 			ZSetOperations.TypedTuple<String> s = (ZSetOperations.TypedTuple)o;

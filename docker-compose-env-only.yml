@@ -21,6 +21,7 @@ services:
   redis:
     image: "redis:alpine"
     hostname: redis
+    #needed to have a clean state at startup
     command: [sh, -c, "rm -f /data/dump.rdb && redis-server --save ''"]
     ports:
       - "6379:6379"
