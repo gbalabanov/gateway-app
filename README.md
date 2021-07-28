@@ -2,7 +2,9 @@ For running the gateway-app along with its dependencies (PostgreSQL, RabbitMQ, R
  1. ./mvnw clean package; docker-compose up. 
 
 Then use the existing Postman collection in /misc/ folder to make requests.
+
 -----------------------------------------------------------------------------------------------
+
 For running the gateway-app test use :
  
  1. docker-compose -f docker-compose-env-only.yml up -d; sleep 10; ./mvnw clean test; docker-compose -f docker-compose-env-only.yml down
