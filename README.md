@@ -4,8 +4,8 @@ For running the gateway-app along with its dependencies (PostgreSQL, RabbitMQ, R
 Then use the existing Postman collection in /misc/ folder to make requests.
 
 Configuration:
- docker-compose.yml:
-  GATEWAY_BROKER_QUEUES=6 - set the number of queues to be created during runtime
+docker-compose.yml:
+GATEWAY_BROKER_QUEUES=6 - set the number of queues to be created during runtime
 
 -----------------------------------------------------------------------------------------------
 
